@@ -8,7 +8,6 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    var imageName : String?
     var thisUser: User?
     @IBOutlet var imageUser: UIImageView!
     
@@ -18,15 +17,22 @@ class DetailViewController: UIViewController {
         navigationController?.navigationItem.largeTitleDisplayMode = .never
         // Do any additional setup after loading the view.
        
-            if let imageOfUser = thisUser {
-                imageUser.image = UIImage(named: imageOfUser.image)
-                title = thisUser?.name
+            if let isUser = thisUser {
+                //get the path of files saved
+                let path = getDocumentsDirectory().appendingPathComponent(isUser.image)
+                imageUser.image = UIImage(contentsOfFile: path.path)
+                title = isUser.name
 
             }
             return
             
             //now assign it the vallue and show it.
        
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
     }
     
     override func viewWillAppear(_ animated: Bool) {

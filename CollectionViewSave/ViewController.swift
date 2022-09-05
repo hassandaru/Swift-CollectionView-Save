@@ -108,8 +108,7 @@ class ViewController: UICollectionViewController , UIImagePickerControllerDelega
             //present in navigation controller
             if let vc = self?.storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
                 let user = self?.userList[indexPath.item]
-                vc.imageName = user?.image
-                vc.title = user?.name
+                vc.thisUser = user
                 self?.navigationController?.pushViewController(vc, animated: true)
                 return
             }
