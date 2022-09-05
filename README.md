@@ -1,1 +1,2 @@
 # Swith-CollectionView-Save
+An app where we save a UICollectionViewCell with Class item having an image and a name, save it in NSUserDefaults and giving user the ability to view the full screen image on the screen on clicking it.
